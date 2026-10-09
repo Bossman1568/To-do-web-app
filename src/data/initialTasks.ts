@@ -1,0 +1,115 @@
+import { Task } from '../types/task';
+import { getTodayDateString } from '../utils/date';
+
+const today = getTodayDateString();
+const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
+const tomorrow = new Date(Date.now() + 86400000).toISOString().split('T')[0];
+const inThreeDays = new Date(Date.now() + 86400000 * 3).toISOString().split('T')[0];
+
+export const INITIAL_TASKS: Task[] = [
+  {
+    id: 'task-1',
+    title: 'Deploy urgent production security patch',
+    description: 'Update vulnerable OpenSSL packages on web gateway cluster.',
+    completed: false,
+    priority: 'urgent',
+    category: 'Work',
+    tags: ['DevOps', 'Security'],
+    dueDate: today,
+    dueTime: '17:00',
+    pinned: true,
+    starred: true,
+    createdAt: new Date(Date.now() - 1000 * 60 * 45).toISOString(),
+    subtasks: [
+      { id: 'sub-1-1', title: 'Test patch in staging environment', completed: true },
+      { id: 'sub-1-2', title: 'Verify TLS certificates and cipher suites', completed: true },
+      { id: 'sub-1-3', title: 'Execute rolling restart across nodes', completed: false },
+    ],
+  },
+  {
+    id: 'task-2',
+    title: 'Review quarterly architecture design document',
+    description: 'Ensure caching layers and database connection pooling meet performance targets.',
+    completed: false,
+    priority: 'high',
+    category: 'Work',
+    tags: ['Engineering', 'Review'],
+    dueDate: tomorrow,
+    dueTime: '14:00',
+    pinned: true,
+    starred: false,
+    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 3).toISOString(),
+    subtasks: [
+      { id: 'sub-2-1', title: 'Audit query latency benchmarks', completed: true },
+      { id: 'sub-2-2', title: 'Document failover topology', completed: false },
+    ],
+  },
+  {
+    id: 'task-3',
+    title: 'Submit quarterly expense reports',
+    description: 'Attach receipts for software subscriptions and client lunch meetings.',
+    completed: false,
+    priority: 'high',
+    category: 'Finance',
+    tags: ['Admin', 'Expenses'],
+    dueDate: yesterday, // Overdue task to demonstrate overdue filter
+    dueTime: '18:00',
+    starred: true,
+    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 36).toISOString(),
+    subtasks: [
+      { id: 'sub-3-1', title: 'Export Stripe and AWS invoices', completed: true },
+      { id: 'sub-3-2', title: 'Fill reimbursement form', completed: false },
+    ],
+  },
+  {
+    id: 'task-4',
+    title: 'Schedule 30-minute afternoon cardio session',
+    description: 'Interval running or cycling workout to recharge energy.',
+    completed: true,
+    priority: 'low',
+    category: 'Health',
+    tags: ['Fitness', 'Habit'],
+    dueDate: today,
+    dueTime: '16:00',
+    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 8).toISOString(),
+    completedAt: new Date(Date.now() - 1000 * 60 * 60 * 1).toISOString(),
+  },
+  {
+    id: 'task-5',
+    title: 'Finalize presentation slides for team sync',
+    description: 'Add summary charts and highlight key metrics from sprint retrospectives.',
+    completed: true,
+    priority: 'medium',
+    category: 'Work',
+    tags: ['Sync', 'Design'],
+    dueDate: today,
+    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 12).toISOString(),
+    completedAt: new Date(Date.now() - 1000 * 60 * 60 * 2).toISOString(),
+    subtasks: [
+      { id: 'sub-5-1', title: 'Gather weekly velocity metrics', completed: true },
+      { id: 'sub-5-2', title: 'Export Figma diagrams', completed: true },
+    ],
+  },
+  {
+    id: 'task-6',
+    title: 'Review personal investment portfolio & monthly budget',
+    description: 'Rebalance index funds and allocate automated emergency fund contributions.',
+    completed: false,
+    priority: 'medium',
+    category: 'Finance',
+    tags: ['Personal', 'Investing'],
+    dueDate: inThreeDays,
+    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24).toISOString(),
+  },
+  {
+    id: 'task-7',
+    title: 'Read chapter 4 of Clean Architecture book',
+    description: 'Focus on dependency inversion and component boundaries.',
+    completed: false,
+    priority: 'low',
+    category: 'Study',
+    tags: ['Learning', 'Books'],
+    dueDate: inThreeDays,
+    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 48).toISOString(),
+  },
+];

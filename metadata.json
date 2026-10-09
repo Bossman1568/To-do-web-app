@@ -1,0 +1,6 @@
+{
+  "name": "TaskFlow - Modern Task & To-Do Manager",
+  "description": "A modern, clean, and responsive To-Do List web application with real-time analytics dashboard, priority management, search, filters, and local storage persistence.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
